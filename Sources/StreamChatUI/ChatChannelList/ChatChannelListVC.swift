@@ -14,7 +14,7 @@ open class ChatChannelListVC: _ViewController,
     ThemeProvider,
     SwipeableViewDelegate {
     /// The data of the channel list.
-    public private(set) var channels: [ChatChannel] = []
+    public var channels: [ChatChannel] = []
 
     /// The `ChatChannelListController` instance that provides channels data.
     public var controller: ChatChannelListController!
@@ -250,7 +250,7 @@ open class ChatChannelListVC: _ViewController,
     }
 
     /// Updates the list view with the most updated channels.
-    public func reloadChannels() {
+    open func reloadChannels() {
         let previousChannels = channels
         let newChannels = Array(controller.channels)
         let stagedChangeset = StagedChangeset(source: previousChannels, target: newChannels)

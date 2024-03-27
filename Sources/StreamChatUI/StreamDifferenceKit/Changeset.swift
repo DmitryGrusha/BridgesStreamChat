@@ -4,27 +4,27 @@
 ///
 /// Notice that the value of the changes represents offsets of collection not index.
 /// Since offsets are unordered, order is ignored when comparing two `Changeset`s.
-struct Changeset<Collection: Swift.Collection> {
+public struct Changeset<Collection: Swift.Collection> {
     /// The collection after changed.
-    var data: Collection
+    public var data: Collection
 
     /// The offsets of deleted sections.
-    var sectionDeleted: [Int]
+    public var sectionDeleted: [Int]
     /// The offsets of inserted sections.
-    var sectionInserted: [Int]
+    public var sectionInserted: [Int]
     /// The offsets of updated sections.
-    var sectionUpdated: [Int]
+    public var sectionUpdated: [Int]
     /// The pairs of source and target offset of moved sections.
-    var sectionMoved: [(source: Int, target: Int)]
+    public var sectionMoved: [(source: Int, target: Int)]
 
     /// The paths of deleted elements.
-    var elementDeleted: [ElementPath]
+    public var elementDeleted: [ElementPath]
     /// The paths of inserted elements.
-    var elementInserted: [ElementPath]
+    public var elementInserted: [ElementPath]
     /// The paths of updated elements.
-    var elementUpdated: [ElementPath]
+    public var elementUpdated: [ElementPath]
     /// The pairs of source and target path of moved elements.
-    var elementMoved: [(source: ElementPath, target: ElementPath)]
+    public var elementMoved: [(source: ElementPath, target: ElementPath)]
 
     /// Creates a new `Changeset`.
     ///
@@ -38,7 +38,7 @@ struct Changeset<Collection: Swift.Collection> {
     ///   - elementInserted: The paths of inserted elements.
     ///   - elementUpdated: The paths of updated elements.
     ///   - elementMoved: The pairs of source and target path of moved elements.
-    init(
+    public init(
         data: Collection,
         sectionDeleted: [Int] = [],
         sectionInserted: [Int] = [],
@@ -64,7 +64,7 @@ struct Changeset<Collection: Swift.Collection> {
 extension Changeset {
     /// The number of section changes.
     @inlinable
-    var sectionChangeCount: Int {
+    public var sectionChangeCount: Int {
         return sectionDeleted.count
             + sectionInserted.count
             + sectionUpdated.count
@@ -73,7 +73,7 @@ extension Changeset {
 
     /// The number of element changes.
     @inlinable
-    var elementChangeCount: Int {
+    public var elementChangeCount: Int {
         return elementDeleted.count
             + elementInserted.count
             + elementUpdated.count
@@ -82,31 +82,31 @@ extension Changeset {
 
     /// The number of all changes.
     @inlinable
-    var changeCount: Int {
+    public var changeCount: Int {
         return sectionChangeCount + elementChangeCount
     }
 
     /// A Boolean value indicating whether has section changes.
     @inlinable
-    var hasSectionChanges: Bool {
+    public var hasSectionChanges: Bool {
         return sectionChangeCount > 0
     }
 
     /// A Boolean value indicating whether has element changes.
     @inlinable
-    var hasElementChanges: Bool {
+    public var hasElementChanges: Bool {
         return elementChangeCount > 0
     }
 
     /// A Boolean value indicating whether has changes.
     @inlinable
-    var hasChanges: Bool {
+    public var hasChanges: Bool {
         return changeCount > 0
     }
 }
 
 extension Changeset: Equatable where Collection: Equatable {
-    static func == (lhs: Changeset, rhs: Changeset) -> Bool {
+    public static func == (lhs: Changeset, rhs: Changeset) -> Bool {
         return lhs.data == rhs.data
             && Set(lhs.sectionDeleted) == Set(rhs.sectionDeleted)
             && Set(lhs.sectionInserted) == Set(rhs.sectionInserted)

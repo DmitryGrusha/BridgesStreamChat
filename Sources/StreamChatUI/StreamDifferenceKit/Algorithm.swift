@@ -20,8 +20,8 @@ extension StagedChangeset where Collection: RangeReplaceableCollection, Collecti
     ///   - target: A target collection to calculate differences.
     ///
     /// - Complexity: O(n)
-    @inlinable
-    init(source: Collection, target: Collection) {
+//    @inlinable
+    public init(source: Collection, target: Collection) {
         self.init(source: source, target: target, section: 0)
     }
 
@@ -45,8 +45,8 @@ extension StagedChangeset where Collection: RangeReplaceableCollection, Collecti
     ///   - section: An Int value to use as section index (or offset) of element.
     ///
     /// - Complexity: O(n)
-    @inlinable
-    init(source: Collection, target: Collection, section: Int) {
+//    @inlinable
+    public init(source: Collection, target: Collection, section: Int) {
         let sourceElements = ContiguousArray(source)
         let targetElements = ContiguousArray(target)
 
@@ -150,7 +150,7 @@ extension StagedChangeset where Collection: RangeReplaceableCollection, Collecti
     ///   - target: A target sectioned collection to calculate differences.
     ///
     /// - Complexity: O(n)
-    @inlinable
+//    @inlinable
     init(source: Collection, target: Collection) {
         typealias Section = Collection.Element
         typealias SectionIdentifier = Collection.Element.DifferenceIdentifier

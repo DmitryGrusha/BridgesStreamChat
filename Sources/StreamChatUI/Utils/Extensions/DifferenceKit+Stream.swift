@@ -163,7 +163,7 @@ extension UICollectionView {
     ///                updates should be stopped and performed reloadData. Default is nil.
     ///   - setData: A closure that takes the collection as a parameter.
     ///              The collection should be set to data-source of UICollectionView.
-    func reload<C>(
+    public func reload<C>(
         using stagedChangeset: StagedChangeset<C>,
         reconfigure: ((IndexPath) -> Bool)? = nil,
         interrupt: ((Changeset<C>) -> Bool)? = nil,
