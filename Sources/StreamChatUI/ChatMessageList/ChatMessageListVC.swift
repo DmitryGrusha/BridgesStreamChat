@@ -40,7 +40,7 @@ open class ChatMessageListVC: _ViewController,
         .init(rootViewController: self)
 
     /// Strong reference of message actions view controller to allow performing async operations.
-    private var messageActionsVC: ChatMessageActionsVC?
+    private(set) var messageActionsVC: ChatMessageActionsVC?
 
     /// A View used to display the messages.
     open private(set) lazy var listView: ChatMessageListView = components
